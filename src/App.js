@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React, { useState } from "react";
 import {
@@ -7,28 +6,57 @@ import {
   NavSat,
   INSstatus,
   SystemStatus,
-} from "./data";
+} from "./startingData";
 import AtakCard from "./components/AtakCard";
 import GpsCard from "./components/GpsCard";
 import InsCard from "./components/InsCard";
 import OdomCard from "./components/OdomCard";
 import SysstatCard from "./components/SysstatCard";
+import Updater from "./components/Updater";
 
 function App() {
-  const [odom, setOdom] = useState(VehicleOdom);
-  const [atak, setAtak] = useState(AtakStatus);
-  const [gps, setGPS] = useState(NavSat);
-  const [ins, setINS] = useState(INSstatus);
-  const [sysstat, setSysstat] = useState(SystemStatus);
+  const [odomData, setOdomData] = useState(() => {
+    let d = JSON.stringify(localStorage.getItem("odom"));
+    return d !== "undefined" ? JSON.parse(d) : VehicleOdom;
+  });
+  const [atakData, setAtakData] = useState(() => {
+    let d = localStorage.getItem("atak");
+    return d !== "undefined" ? JSON.parse(d) : AtakStatus;
+  });
+  const [navData, setNavData] = useState(() => {
+    let d = localStorage.getItem("navsat");
+    return d !== "undefined" ? JSON.parse(d) : NavSat;
+  });
+  const [insData, setINSData] = useState(() => {
+    let d = localStorage.getItem("ins");
+    return d !== "undefined" ? JSON.parse(d) : INSstatus;
+  });
+  const [sysstatData, setSysstatData] = useState(() => {
+    let d = localStorage.getItem("sysstat");
+    return d !== "undefined" ? JSON.parse(d) : SystemStatus;
+  });
 
   return (
     <div className="app">
+      <Updater
+        atakData={atakData}
+        odomData={odomData}
+        INSData={insData}
+        navData={navData}
+        sysstatData={sysstatData}
+        setOdomData={setOdomData}
+        setAtakData={setAtakData}
+        setNavData={setNavData}
+        setINSData={setINSData}
+        setSysstatData={setSysstatData}
+      />
+      <h1>Data display</h1>
       <div className="card-container">
-        <AtakCard data={atak} setData={setAtak} />
-        <GpsCard data={gps} setData={setGPS} />
-        <InsCard data={ins} setData={setINS} />
-        <OdomCard data={odom} setData={setOdom} />
-        <SysstatCard data={sysstat} setData={setSysstat} />
+        <AtakCard data={atakData} />
+        <GpsCard data={navData} />
+        <InsCard data={insData} />
+        <OdomCard data={odomData} />
+        <SysstatCard data={sysstatData} />
       </div>
     </div>
   );

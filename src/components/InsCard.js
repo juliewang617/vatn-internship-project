@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function InsCard({ data, setData }) {
   return (
@@ -10,7 +10,7 @@ export default function InsCard({ data, setData }) {
       <p>dvl_recv {data.dvl_recv.toString()}</p>
       <p>dvl_used: {data.dvl_used.toString()}</p>
       <p>lat_accuracy: {data.lat_accuracy}</p>
-      <p>long_accuracy: {data.long_accuracy}</p>
+      <p>long_accuracy: {data.lon_accuracy}</p>
     </div>
   );
 }

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function SysstatCard({ data, setData }) {
+  // updated 2 times a sec
   return (
     <div className="card">
       <h2>System status</h2>

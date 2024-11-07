@@ -1,8 +1,10 @@
+// contains the starting information for each state
+
 // 5 Hz update rate
 const VehicleOdom = {
   northing: 10.0,
   easting: 655432.21635,
-  zone: (19, "T"),
+  zone: [19, "T"],
   depth: 15.0,
   heading: 59.5,
   pitch: 0.5,
