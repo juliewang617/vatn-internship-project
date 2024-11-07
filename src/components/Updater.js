@@ -24,7 +24,7 @@ export default function Updater({
       setOdomData((x) => ({
         ...x,
         northing: x.northing,
-        easting: x.easting + Math.random() * 0.0001,
+        easting: x.easting + Math.random(),
         zone: x.zone,
         heading: x.heading,
         pitch: x.pitch,
@@ -41,8 +41,8 @@ export default function Updater({
     const updateNavData = setInterval(() => {
       setNavData((x) => ({
         ...x,
-        latitude: x.latitude + Math.random() * 0.0001,
-        longitude: x.longitude + Math.random() * 0.0001,
+        latitude: x.latitude + Math.random(),
+        longitude: x.longitude + Math.random(),
       }));
       tempNavData = navData;
     }, 200);
@@ -50,8 +50,8 @@ export default function Updater({
     const updateINSData = setInterval(() => {
       setINSData((x) => ({
         ...x,
-        lat_accuracy: x.lat_accuracy + Math.random() * 0.01,
-        lon_accuracy: x.lon_accuracy + Math.random() * 0.01,
+        lat_accuracy: x.lat_accuracy + Math.random(),
+        lon_accuracy: x.lon_accuracy + Math.random(),
       }));
       tempINSData = INSData;
     }, 500);
@@ -60,7 +60,7 @@ export default function Updater({
       setSysstatData((x) => ({
         ...x,
       }));
-      tempSysstatData = setSysstatData;
+      tempSysstatData = sysstatData;
     }, 500);
 
     // update local storage only once every 5 seconds to reduce load for the
@@ -71,6 +71,7 @@ export default function Updater({
       localStorage.setItem("ins", JSON.stringify(tempINSData));
       localStorage.setItem("odom", JSON.stringify(tempOdomData));
       localStorage.setItem("sysstat", JSON.stringify(tempSysstatData));
+      console.log("updated localStorage:", localStorage);
     }, 5000);
 
     // clear the interval

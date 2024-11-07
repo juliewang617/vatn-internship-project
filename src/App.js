@@ -16,24 +16,24 @@ import Updater from "./components/Updater";
 
 function App() {
   const [odomData, setOdomData] = useState(() => {
-    let d = JSON.stringify(localStorage.getItem("odom"));
-    return d !== "undefined" ? JSON.parse(d) : VehicleOdom;
+    let d = localStorage.getItem("odom");
+    return d && d !== "undefined" ? JSON.parse(d) : VehicleOdom;
   });
   const [atakData, setAtakData] = useState(() => {
     let d = localStorage.getItem("atak");
-    return d !== "undefined" ? JSON.parse(d) : AtakStatus;
+    return d && d !== "undefined" ? JSON.parse(d) : AtakStatus;
   });
   const [navData, setNavData] = useState(() => {
     let d = localStorage.getItem("navsat");
-    return d !== "undefined" ? JSON.parse(d) : NavSat;
+    return d && d !== "undefined" ? JSON.parse(d) : NavSat;
   });
   const [insData, setINSData] = useState(() => {
     let d = localStorage.getItem("ins");
-    return d !== "undefined" ? JSON.parse(d) : INSstatus;
+    return d && d !== "undefined" ? JSON.parse(d) : INSstatus;
   });
   const [sysstatData, setSysstatData] = useState(() => {
     let d = localStorage.getItem("sysstat");
-    return d !== "undefined" ? JSON.parse(d) : SystemStatus;
+    return d && d !== "undefined" ? JSON.parse(d) : SystemStatus;
   });
 
   return (
