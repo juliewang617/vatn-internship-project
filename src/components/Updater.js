@@ -41,8 +41,8 @@ export default function Updater({
     const updateNavData = setInterval(() => {
       setNavData((x) => ({
         ...x,
-        latitude: x.latitude + Math.random(),
-        longitude: x.longitude + Math.random(),
+        latitude: x.latitude + ((Math.random() * 0.01) % 90.0),
+        longitude: x.longitude + ((Math.random() * 0.01) % 90.0),
       }));
       tempNavData = navData;
     }, 200);
