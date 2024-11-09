@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/vatn-internship-project/static/css/main.9afc3eaa.css",
+    "main.js": "/vatn-internship-project/static/js/main.da2ed7d6.js",
+    "index.html": "/vatn-internship-project/index.html",
+    "main.9afc3eaa.css.map": "/vatn-internship-project/static/css/main.9afc3eaa.css.map",
+    "main.da2ed7d6.js.map": "/vatn-internship-project/static/js/main.da2ed7d6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9afc3eaa.css",
+    "static/js/main.da2ed7d6.js"
+  ]
+}
